@@ -1,0 +1,139 @@
+/* Contenedor principal */
+.App {
+  min-height: 100vh;
+  background-image: url('/fondo-autos.jpg'); /* imagen de fondo en public/assets */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hero */
+.hero {
+  width: 100%;
+  text-align: center;
+  padding: 80px 20px 50px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  backdrop-filter: blur(6px);
+  animation: fadeIn 1s ease forwards;
+  color: #323a71; /* título destacado */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;   
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  margin-top: 0;
+}
+
+/* Animación de fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Grid de autos */
+.catalog-container {
+  width: 100%;
+  padding: 40px 20px; /* más espacio desde el hero */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.autos-grid {
+  display: flex;
+  flex-direction: column; /* tarjetas verticales */
+  gap: 30px; /* separación entre tarjetas */
+  width: 100%;
+  max-width: 1000px; /* limita ancho en pantallas grandes */
+  align-items: center;
+}
+
+/* Menú de navegación */
+.nav-menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu li {
+  margin: 0 15px;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #ffcc00;
+}
+
+/* Botón de cerrar sesión */
+.logout-button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+  background: rgba(0,0,0,0.7);
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+/* Botones generales */
+button {
+  border-radius: 8px;
+  border: none;
+  padding: 0.7em 1.5em;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
