@@ -20,7 +20,10 @@ function NavMenu({ items, onLogout, isLoggedIn }) {
         <li><img src="/logoferrari.png" alt="Ferrari" className="logo-marca" /></li>
         <li><img src="/logolambo.png" alt="Lamborghini" className="logo-marca" /></li>
         <li><img src="/logoaudi.png" alt="Audi" className="logo-marca" /></li>
-        <li><img src="/logomaserati.png" alt="Maserati" className="logo-marca" /></li>
+        <li><img src="/logoford.png" alt="Ford" className="logo-marca" /></li>
+        <li><img src="/logochevrolet.png" alt="Chevrolet" className="logo-marca" /></li>
+        <li><img src="/logomercedes.png" alt="Mercedes" className="logo-marca" /></li>
+        <li><img src="/logoporsche.png" alt="Porsche" className="logo-marca" /></li>
       </ul>
 
       {/* Botón de cerrar sesión */}
