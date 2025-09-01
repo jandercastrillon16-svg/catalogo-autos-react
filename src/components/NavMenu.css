@@ -1,29 +1,46 @@
 .nav-menu {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #0d1b2a, #122b51, #0d1b2a); /* degradado elegante */
-  padding: 15px 30px;
-  border-bottom: 3px solid #ffd700; /* línea premium dorada */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  justify-content: space-between;
+  background: linear-gradient(90deg, #0a0f1c, #141e30);
+  padding: 12px 40px;
+  border-bottom: 2px solid #ffd700;
+  top: 0;
+  z-index: 1000;
+  height: 75px;
+  transition: top 0.3s ease;
 }
 
+.nav-menu.hide {
+  top: -100px; /* se oculta al bajar */
+}
+
+.nav-menu.show {
+  top: 0; /* reaparece al subir */
+}
+
+/* LINKS IZQUIERDA */
 .menu-items {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
 .menu-items li a {
-  color: #fff;
-  font-weight: bold;
+  color: #f5f5f5;
+  font-weight: 500;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   position: relative;
-  padding: 5px 10px;
-  transition: color 0.3s ease;
+  padding: 6px 10px;
+  transition: all 0.3s ease;
+}
+
+.menu-items li a:hover {
+  color: #ffd700;
 }
 
 .menu-items li a::after {
@@ -33,53 +50,122 @@
   bottom: -5px;
   width: 100%;
   height: 2px;
-  background: #f7f7f7; /* subrayado premium */
+  background: #ffd700;
   transform: scaleX(0);
   transition: transform 0.3s ease;
-}
-
-.menu-items li a:hover {
-  color: #ffffff;
 }
 
 .menu-items li a:hover::after {
   transform: scaleX(1);
 }
 
-/* Logos de marcas */
+/* LOGOS CENTRO */
 .brand-logos {
-  list-style: none;
+  flex-grow: 1;
   display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+  overflow: hidden;
+}
+
+.brand-logos-track {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  animation: scrollLogos 30s linear infinite;
 }
 
 .logo-marca {
-  height: 55px;
-  width: auto;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
-  transition: transform 0.3s ease, filter 0.3s ease;
+  height: 40px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .logo-marca:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 12px #ffffff);
+  transform: scale(1.1);
+  opacity: 1;
 }
 
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* LOGOUT DERECHA */
 .logout-nav button {
-  font-size: 1rem;
-  padding: 8px 15px;
-  border-radius: 8px;
-  background: linear-gradient(45deg, #d32f2f, #ff5252);
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ff1e1e, #d60000);
   border: none;
   color: #fff;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logout-nav button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+  box-shadow: 0 0 12px rgba(255, 50, 50, 0.7);
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+/* MÓVIL */
+@media (max-width: 900px) {
+  .menu-items,
+  .brand-logos,
+  .logout-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu.active {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    height: auto;
+  }
+
+  .nav-menu.active .menu-items,
+  .nav-menu.active .logout-nav,
+  .nav-menu.active .brand-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    background: #0a0f1c;
+    padding: 20px;
+    border-top: 2px solid #ffd700;
+  }
+
+  .nav-menu.active .brand-logos {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .nav-menu.active .logout-nav button {
+    width: 100%;
+  }
 }

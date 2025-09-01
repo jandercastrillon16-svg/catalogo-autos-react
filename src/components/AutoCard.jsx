@@ -2,7 +2,7 @@ import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import './AutoCard.css';
 
-function AutoCard({ nombre, marca, modelo, anio, precio, imagen }) {
+function AutoCard({ nombre, marca, modelo, anio, precio, imagen, addToCart }) {
   const precioCOP = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(precio);
 
   return (
@@ -15,7 +15,7 @@ function AutoCard({ nombre, marca, modelo, anio, precio, imagen }) {
         </p>
         <p className="auto-precio">{precioCOP}</p>
 
-        <button className="btn-carrito">
+        <button className="btn-carrito" onClick={addToCart}>
           <FaShoppingCart className="icono-carrito" /> Comprar
         </button>
       </div>

@@ -1,7 +1,7 @@
 /* Contenedor principal */
 .App {
   min-height: 100vh;
-  background-image: url('/fondo-autos.jpg'); /* imagen de fondo en public/assets */
+  background-image: url('/fondo-autos.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,38 +14,61 @@
   margin: 0;
 }
 
-/* Hero */
+/* Hero renovado */
 .hero {
   width: 100%;
   text-align: center;
-  padding: 80px 20px 50px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-  backdrop-filter: blur(6px);
+  padding: 120px 20px 80px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   animation: fadeIn 1s ease forwards;
-  color: #323a71; /* título destacado */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  z-index: 0;
 }
 
 .hero h1 {
-  font-size: 3rem;
-  font-weight: 800;   
+  font-size: 3.5rem;
+  font-weight: 900;
   margin-bottom: 15px;
+  z-index: 1;
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
 }
 
 .hero p {
-  font-size: 1.5rem;
-  color: #e0e0e0;
+  font-size: 1.6rem;
+  color: #f0f0f0;
   margin-top: 0;
+  z-index: 1;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
 }
 
-/* Animación de fade-in */
+/* Animación fade-in */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive hero */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .hero p {
+    font-size: 1.3rem;
   }
 }
 
@@ -53,66 +76,21 @@
 /* Grid de autos */
 .catalog-container {
   width: 100%;
-  padding: 40px 20px; /* más espacio desde el hero */
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.autos-grid {
-  display: flex;
-  flex-direction: column; /* tarjetas verticales */
-  gap: 30px; /* separación entre tarjetas */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
   width: 100%;
-  max-width: 1000px; /* limita ancho en pantallas grandes */
-  align-items: center;
+  max-width: 1400px;
 }
 
-/* Menú de navegación */
-.nav-menu {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-menu ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-menu li {
-  margin: 0 15px;
-}
-
-.nav-menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-.nav-menu a:hover {
-  color: #ffcc00;
-}
-
-/* Botón de cerrar sesión */
-.logout-button {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  max-width: 1000px;
-  margin-bottom: 20px;
-}
-
+/* Footer */
 .footer {
   width: 100%;
   text-align: center;
@@ -136,4 +114,65 @@ button {
 
 button:hover {
   transform: scale(1.05);
+}
+
+/* Scroll suave para toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive hero */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+  }
+  .auto-grid {
+    gap: 15px;
+  }
+}
+
+.cart-container {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(20,20,20,0.9);
+  border: 1px solid #ffd700;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px auto;
+  color: #fff;
+}
+
+.cart-container h2 {
+  margin-top: 0;
+  color: #ffd700;
+}
+
+.cart-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.remove-btn {
+  background: #d32f2f;
+  border: none;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.remove-btn:hover {
+  background: #ff1e1e;
 }
